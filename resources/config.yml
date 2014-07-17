@@ -1,0 +1,11 @@
+#HeadshotSounds by wesley27 - Configuration
+
+#HeadshotSound: the sound that plays when someone gets a headshot
+#All available sounds to use can be found here: http://jd.bukkit.org/rb/apidocs/org/bukkit/Sound.html
+#The default HeadshotSound is ZOMBIE_WOODBREAK
+HeadshotSound: ZOMBIE_WOODBREAK
+
+#RunCommand: run a command when a player gets a headshot
+#Use %shooter to get the shooters name, use %victim to get the victims name
+#The default value, for no command, is none
+RunCommand: none

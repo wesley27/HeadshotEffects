@@ -30,10 +30,6 @@ public class headshotsounds extends JavaPlugin implements Listener {
 	}
 	
 	public void loadConfiguration() {
-		String headshotsound = "HeadshotSound";
-		String headshotcmd = "RunCommand";
-		getConfig().addDefault(headshotsound, "ZOMBIE_WOODBREAK");
-		getConfig().addDefault(headshotcmd, "none");
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 	}
