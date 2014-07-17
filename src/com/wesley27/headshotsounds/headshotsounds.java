@@ -21,10 +21,21 @@ public class headshotsounds extends JavaPlugin implements Listener {
 	public void onEnable() {
 		logger.info("HeadshotSounds Enabled");
 		getServer().getPluginManager().registerEvents(this, this);
+		
+		loadConfiguration();
 	}
 
 	public void onDisable() {
 		logger.info("HeadshotSounds Disabled");
+	}
+	
+	public void loadConfiguration() {
+		String headshotsound = "HeadshotSound";
+		String headshotcmd = "RunCommand";
+		getConfig().addDefault(headshotsound, "ZOMBIE_WOODBREAK");
+		getConfig().addDefault(headshotcmd, "none");
+		getConfig().options().copyDefaults(true);
+		saveConfig();
 	}
 
 	@EventHandler(ignoreCancelled = true)
