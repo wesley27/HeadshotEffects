@@ -1,5 +1,5 @@
-name: HeadshotSounds
-main: com.wesley27.headshotsounds.headshotsounds
-version: 1.1
-description: Sound effect and more when getting a headshot
+name: HeadshotEffects
+main: com.wesley27.headshoteffects.Headshoteffects
+version: 1.2
+description: A plethora of options to do when someone gets a headshot
 author: wesley27

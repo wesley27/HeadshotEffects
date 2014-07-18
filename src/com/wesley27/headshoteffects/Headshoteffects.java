@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -20,14 +21,14 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 	Logger logger = Logger.getLogger("Minecraft");
 
 	public void onEnable() {
-		logger.info("HeadshotSounds Enabled");
+		logger.info("HeadshotEffects Enabled");
 		getServer().getPluginManager().registerEvents(this, this);
 		
 		loadConfiguration();
 	}
 
 	public void onDisable() {
-		logger.info("HeadshotSounds Disabled");
+		logger.info("HeadshotEffects Disabled");
 	}
 	
 	public void loadConfiguration() {
@@ -66,6 +67,12 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 				String shootermsg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("ShooterMessage"));
 				
 				shooter.sendMessage(shootermsg.replace("%victim", vnamevar));
+			}
+			
+			if(!(getConfig().getString("InstaKill")).equalsIgnoreCase("false")) {
+				if(event.getDamager() instanceof Arrow) {
+					event.setDamage(20);
+				}
 			}
 			
 			if(!(getConfig().getString("HeadshotSound")).equalsIgnoreCase("none")) {
