@@ -2,6 +2,7 @@ package com.wesley27.headshotsounds;
 
 import java.util.logging.Logger;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
@@ -31,7 +32,7 @@ public class headshotsounds extends JavaPlugin implements Listener {
 	
 	public void loadConfiguration() {
 		getConfig().options().copyDefaults(true);
-		saveConfig();
+		saveDefaultConfig();
 	}
 
 	@EventHandler(ignoreCancelled = true)
@@ -54,11 +55,42 @@ public class headshotsounds extends JavaPlugin implements Listener {
 		boolean headshot = projy - victimy > getBodyheight(victimType);
 		
 		if(headshot) {
-			Entity p = victim;
-			World w = p.getWorld();
-			w.playSound(p.getLocation(), Sound.ZOMBIE_WOODBREAK, 2, 1);
-		}
-		
+			Player shooter = (Player)proj.getShooter();
+			Player victimn = (Player)victim;
+			World w = shooter.getWorld();
+			
+			String vnamevar = victimn.getName();
+			String snamevar = shooter.getName();
+			
+			if(!(getConfig().getString("ShooterMessage")).equalsIgnoreCase("none")) {
+				String shootermsg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("ShooterMessage"));
+				
+				shooter.sendMessage(shootermsg.replace("%victim", vnamevar));
+			}
+			
+			if(!(getConfig().getString("HeadshotSound")).equalsIgnoreCase("none")) {
+				try {
+					Sound hssound = Sound.valueOf(getConfig().getString("HeadshotSound"));
+					w.playSound(shooter.getLocation(), hssound, 2, 1);
+				}
+				catch(IllegalArgumentException invalidsound) {
+					shooter.sendMessage(ChatColor.RED + "[HeadshotSounds] An invalid sound name was entered in the config, notify an admin!");
+				}
+			}
+			
+			if(!(getConfig().getString("RunCommand")).equalsIgnoreCase("none")) {
+				String runcmd = ChatColor.translateAlternateColorCodes('&', getConfig().getString("RunCommand"));
+				
+				getServer().dispatchCommand(getServer().getConsoleSender(), runcmd
+						.replace("%shooter", snamevar)
+						.replace("%victim", vnamevar)
+						);
+			}
+			
+			else {
+				return;
+			}
+		}		
 	}
 	
 	private double getBodyheight(EntityType type) {
