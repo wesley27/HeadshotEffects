@@ -1,4 +1,4 @@
-package com.wesley27.headshotsounds;
+package com.wesley27.headshoteffects;
 
 import java.util.logging.Logger;
 
@@ -15,7 +15,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class headshotsounds extends JavaPlugin implements Listener {
+public class Headshoteffects extends JavaPlugin implements Listener {
 
 	Logger logger = Logger.getLogger("Minecraft");
 
