@@ -56,6 +56,10 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 		boolean headshot = projy - victimy > getBodyheight(victimType);
 		
 		if(headshot) {
+			if(!(victim instanceof Player))
+			{
+				return;
+			}
 			Player shooter = (Player)proj.getShooter();
 			Player victimn = (Player)victim;
 			World w = shooter.getWorld();
