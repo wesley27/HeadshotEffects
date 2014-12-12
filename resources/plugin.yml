@@ -3,3 +3,9 @@ main: com.wesley27.headshoteffects.Headshoteffects
 version: 1.3.2
 description: A plethora of options to do when someone gets a headshot
 author: wesley27
+commands:
+    headshoteffects:
+      description: Reload HeadshotEffects's Configuration
+      usage: |
+          /headshoteffects reload - Reloads Config 
+      aliases: [hseffects, hse]
