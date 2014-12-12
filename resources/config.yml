@@ -1,24 +1,24 @@
 #HeadshotEffects by wesley27 - Configuration
 
-#ShooterMessage: the message sent to the shooter when they get a headshot
-#You can use colour codes via the & symbol
-#If your message starts with '&', the line needs to have apostraphes around it. Like '<msg>'
-#To get the victim's name, use %victim
-#Set to none if you don't want a message to be sent to the shooter
+#Do you want HeadShotEffects to only occur in specific worlds? Default is false.
+UseSpecificWorlds: false
+Worlds:
+- world1
+- world2
+- world3
+
+#ShooterMessage: the message sent to the shooter when they get a headshot.
+#Use color codes via '&' and victims name via %victim
 ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 
-#InstaKill: true or false, a headshot will instantly kill the victim
-#Default value is false
+#InstaKill: true or false, a headshot will instantly kill the victim. Default is false.
 InstaKill: false
 
 #HeadshotSound: the sound that plays when someone gets a headshot
 #All available sounds to use can be found here: http://jd.bukkit.org/rb/apidocs/org/bukkit/Sound.html
-#The default value for HeadshotSound is ZOMBIE_WOODBREAK
 #Set to none if you don't want a sound to play when a headshot occurs
 HeadshotSound: ZOMBIE_WOODBREAK
 
-#RunCommand: run a command when a player gets a headshot
-#You can use colour codes via the & symbol
-#Use %shooter to get the shooters name, use %victim to get the victims name
-#The default value, for no command, is none
+#RunCommand: run a command when a player gets a headshot. Default value is none.
+#Use colour codes via the & symbol Use %shooter to get the shooters name, use %victim to get the victims name.
 RunCommand: none
