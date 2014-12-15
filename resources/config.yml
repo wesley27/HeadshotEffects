@@ -11,8 +11,13 @@ Worlds:
 #Use color codes via '&' and victims name via %victim
 ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 
+#A headshot will cause this much extra damage. Put 0 for none.
+ExtraDamage: 0
+
 #InstaKill: true or false, a headshot will instantly kill the victim. Default is false.
+#To instakill only if they player has a helmet, set instakill and helmonly to true.
 InstaKill: false
+    HelmOnly: false
 
 #HeadshotSound: the sound that plays when someone gets a headshot
 #All available sounds to use can be found here: http://jd.bukkit.org/rb/apidocs/org/bukkit/Sound.html

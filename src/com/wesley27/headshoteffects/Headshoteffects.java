@@ -5,12 +5,12 @@ import java.util.logging.Logger;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.World;
+import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
-import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
@@ -100,9 +100,19 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 
 			shooter.sendMessage(shootermsg.replace("%victim", vnamevar));
 		}
+		
+		if (getConfig().getDouble("ExtraDamage") != 0) {
+			if (event.getDamager() instanceof Arrow) {
+				double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
+				event.setDamage(dmg);				
+			}
+		}
 
 		if (getConfig().getBoolean("InstaKill")) {
-			if (event.getDamager() instanceof Snowball) {
+			if (event.getDamager() instanceof Arrow) {
+				if (getConfig().getBoolean("InstaKill.HelmOnly")) {
+					
+				}
 				event.setDamage(20);
 			}
 		}
