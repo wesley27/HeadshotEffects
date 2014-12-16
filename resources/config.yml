@@ -12,7 +12,9 @@ Worlds:
 ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 
 #A headshot will cause this much extra damage. Put 0 for none.
+#For extra damage only if the player has a helmet, set helmonly to true
 ExtraDamage: 0
+    HelmOnly: false
 
 #InstaKill: true or false, a headshot will instantly kill the victim. Default is false.
 #To instakill only if they player has a helmet, set instakill and helmonly to true.

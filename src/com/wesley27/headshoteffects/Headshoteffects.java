@@ -103,17 +103,29 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 		
 		if (getConfig().getDouble("ExtraDamage") != 0) {
 			if (event.getDamager() instanceof Arrow) {
-				double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
-				event.setDamage(dmg);				
+				if (getConfig().getBoolean("ExtraDamage.HelmOnly")) {
+					if (victima.getInventory().getHelmet() != null) {
+						double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
+						event.setDamage(dmg);
+					}
+				}
+				else {
+					double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
+					event.setDamage(dmg);
+				}				
 			}
 		}
 
 		if (getConfig().getBoolean("InstaKill")) {
 			if (event.getDamager() instanceof Arrow) {
 				if (getConfig().getBoolean("InstaKill.HelmOnly")) {
-					
+					if (victima.getInventory().getHelmet() != null) {
+						event.setDamage(20);
+					}
 				}
-				event.setDamage(20);
+				else {
+					event.setDamage(20);
+				}
 			}
 		}
 
