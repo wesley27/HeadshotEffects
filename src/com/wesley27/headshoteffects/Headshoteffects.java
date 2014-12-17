@@ -94,33 +94,34 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 	private void checkConfig(Player shooter, Player victima, World w, EntityDamageByEntityEvent event) {
 		String vnamevar = victima.getName();
 		String snamevar = shooter.getName();
+		String shooterm = getConfig().getString("ShooterMessage");
 		
-		if (!(getConfig().getString("ShooterMessage")).equalsIgnoreCase("none")) {
+		if (!(shooterm.equalsIgnoreCase("none"))) {
 			String shootermsg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("ShooterMessage"));
 
 			shooter.sendMessage(shootermsg.replace("%victim", vnamevar));
 		}
 		
-		if (getConfig().getDouble("ExtraDamage") != 0) {
+		if (getConfig().getDouble("DamageOptions.ExtraDamage") != 0) {
 			if (event.getDamager() instanceof Arrow) {
-				if (getConfig().getBoolean("ExtraDamage.HelmOnly")) {
+				if (getConfig().getBoolean("DamageOptions.HelmOnly")) {
 					if (victima.getInventory().getHelmet() != null) {
-						double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
+						double dmg = event.getDamage() + getConfig().getDouble("DamageOptions.ExtraDamage");
 						event.setDamage(dmg);
 					}
 				}
 				else {
-					double dmg = event.getDamage() + getConfig().getDouble("ExtraDamage");
+					double dmg = event.getDamage() + getConfig().getDouble("DamageOptions.ExtraDamage");
 					event.setDamage(dmg);
 				}				
 			}
 		}
 
-		if (getConfig().getBoolean("InstaKill")) {
+		if (getConfig().getBoolean("DamageOptions.InstaKill")) {
 			if (event.getDamager() instanceof Arrow) {
-				if (getConfig().getBoolean("InstaKill.HelmOnly")) {
+				if (getConfig().getBoolean("DamageOptions.HelmOnly")) {
 					if (victima.getInventory().getHelmet() != null) {
-						event.setDamage(20);
+						event.setDamage(40);
 					}
 				}
 				else {
