@@ -9,3 +9,6 @@ commands:
       usage: |
           /headshoteffects reload - Reloads Config 
       aliases: [hseffects, hse]
+permissions:
+    headshoteffects.reload:
+        description: Allows users to reload the config
