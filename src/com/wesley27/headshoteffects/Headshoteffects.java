@@ -104,8 +104,8 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 		
 		if (getConfig().getDouble("DamageOptions.ExtraDamage") != 0) {
 			if (event.getDamager() instanceof Arrow) {
-				if (getConfig().getBoolean("DamageOptions.HelmOnly")) {
-					if (victima.getInventory().getHelmet() != null) {
+				if (getConfig().getBoolean("DamageOptions.NoHelmOnly")) {
+					if (victima.getInventory().getHelmet() == null) {
 						double dmg = event.getDamage() + getConfig().getDouble("DamageOptions.ExtraDamage");
 						event.setDamage(dmg);
 					}
@@ -119,9 +119,9 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 
 		if (getConfig().getBoolean("DamageOptions.InstaKill")) {
 			if (event.getDamager() instanceof Arrow) {
-				if (getConfig().getBoolean("DamageOptions.HelmOnly")) {
-					if (victima.getInventory().getHelmet() != null) {
-						event.setDamage(40);
+				if (getConfig().getBoolean("DamageOptions.NoHelmOnly")) {
+					if (victima.getInventory().getHelmet() == null) {
+						event.setDamage(20);
 					}
 				}
 				else {

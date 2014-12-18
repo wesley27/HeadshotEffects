@@ -17,7 +17,7 @@ ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 DamageOptions:
     ExtraDamage: 0
     InstaKill: false
-    HelmOnly: false
+    NoHelmOnly: false
 
 #HeadshotSound: the sound that plays when someone gets a headshot
 #All available sounds to use can be found here: http://jd.bukkit.org/rb/apidocs/org/bukkit/Sound.html
