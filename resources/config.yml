@@ -13,7 +13,7 @@ ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 
 #Options for extra damage. The ExtraDamage value will make the headshot do its normal
 #damage + the value. Instakill will instantly kill the victim. For either of these to
-#occur only if the player has a helmet, set HelmOnly to true.
+#occur only if the player doesn't have a helmet, set NoHelmOnly to true.
 DamageOptions:
     ExtraDamage: 0
     InstaKill: false
