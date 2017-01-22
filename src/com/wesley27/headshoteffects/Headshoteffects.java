@@ -3,6 +3,7 @@ package com.wesley27.headshoteffects;
 import java.util.logging.Logger;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.entity.Arrow;
@@ -59,13 +60,16 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 		boolean headshot = projy - victimy > getBodyheight(victimType);
 
 		if (headshot) {
+			Player shooter = (Player) proj.getShooter();
+			World w = shooter.getWorld();
+			
 			if (!(victim instanceof Player)) {
+				checkConfig(shooter, victim, w, event);
 				return;
 			}
-			Player shooter = (Player) proj.getShooter();
+			
 			LivingEntity victimn = (LivingEntity) victim;
 			Player victima = (Player) victimn;
-			World w = shooter.getWorld();
 
 			if (getConfig().getBoolean("UseSpecificWorlds")) {
 				if (getConfig().getStringList("Worlds").contains(w.getName())) {
@@ -100,7 +104,7 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 			String shootermsg = ChatColor.translateAlternateColorCodes('&', getConfig().getString("ShooterMessage"));
 
 			shooter.sendMessage(shootermsg.replace("%victim", vnamevar));
-		}
+		} 
 		
 		if (getConfig().getDouble("DamageOptions.ExtraDamage") != 0) {
 			if (event.getDamager() instanceof Arrow) {
@@ -116,6 +120,12 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 				}				
 			}
 		}
+		
+		if(getConfig().getBoolean("ParticleEffect")) {
+			if(event.getDamager() instanceof Arrow) {
+				w.playEffect(victima.getLocation(), Effect.MOBSPAWNER_FLAMES, 4);
+			}
+		}
 
 		if (getConfig().getBoolean("DamageOptions.InstaKill")) {
 			if (event.getDamager() instanceof Arrow) {
@@ -127,6 +137,49 @@ public class Headshoteffects extends JavaPlugin implements Listener {
 				else {
 					event.setDamage(20);
 				}
+			}
+		}
+
+		if (!(getConfig().getString("HeadshotSound")).equalsIgnoreCase("none")) {
+			try {
+				Sound hssound = Sound.valueOf(getConfig().getString("HeadshotSound"));
+				w.playSound(shooter.getLocation(), hssound, 2, 1);
+			} catch (IllegalArgumentException invalidsound) {
+				shooter.sendMessage(ChatColor.RED + "[HeadshotSounds] An invalid sound name was entered in the config, notify an admin!");
+			}
+		}
+
+		if (!(getConfig().getString("RunCommand")).equalsIgnoreCase("none")) {
+			String runcmd = ChatColor.translateAlternateColorCodes('&', getConfig().getString("RunCommand"));
+
+			getServer().dispatchCommand(getServer().getConsoleSender(), runcmd.replace("%shooter", snamevar).replace("%victim", vnamevar));
+		}
+
+		else {
+			return;
+		}
+	}
+	
+	private void checkConfig(Player shooter, Entity victima, World w, EntityDamageByEntityEvent event) {
+		String vnamevar = victima.getName();
+		String snamevar = shooter.getName();
+		
+		if (getConfig().getDouble("DamageOptions.ExtraDamage") != 0) {
+			if (event.getDamager() instanceof Arrow) {
+				double dmg = event.getDamage() + getConfig().getDouble("DamageOptions.ExtraDamage");
+				event.setDamage(dmg);
+			}
+		}
+		
+		if(getConfig().getBoolean("ParticleEffect")) {
+			if(event.getDamager() instanceof Arrow) {
+				w.playEffect(event.getDamager().getLocation(), Effect.MOBSPAWNER_FLAMES, 1);
+			}
+		}
+
+		if (getConfig().getBoolean("DamageOptions.InstaKill")) {
+			if (event.getDamager() instanceof Arrow) {
+				event.setDamage(20);
 			}
 		}
 

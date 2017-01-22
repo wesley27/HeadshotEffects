@@ -11,6 +11,9 @@ Worlds:
 #Use color codes via '&' and victims name via %victim
 ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
 
+#ParticleEffect: true enables the flame/star effect when someone is shot in the head, false disables
+ParticleEffect: true
+
 #Options for extra damage. The ExtraDamage value will make the headshot do its normal
 #damage + the value. Instakill will instantly kill the victim. For either of these to
 #occur only if the player doesn't have a helmet, set NoHelmOnly to true.
@@ -20,9 +23,10 @@ DamageOptions:
     NoHelmOnly: false
 
 #HeadshotSound: the sound that plays when someone gets a headshot
-#All available sounds to use can be found here: http://jd.bukkit.org/rb/apidocs/org/bukkit/Sound.html
+#All available sounds to use can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+#The default sound is: ENTITY_ZOMBIE_BREAK_DOOR_WOOD
 #Set to none if you don't want a sound to play when a headshot occurs
-HeadshotSound: ZOMBIE_WOODBREAK
+HeadshotSound: ENTITY_ZOMBIE_BREAK_DOOR_WOOD
 
 #RunCommand: run a command when a player gets a headshot. Default value is none.
 #Use colour codes via the & symbol Use %shooter to get the shooters name, use %victim to get the victims name.
