@@ -1,0 +1,18 @@
+name: HeadshotEffects
+main: com.wesley27.headshoteffects.HeadshotEffects
+version: 2.0
+description: A plethora of options to do when someone gets a headshot
+author: wesley27
+commands:
+    headshoteffects:
+      description: Reload HeadshotEffects's Configuration
+      usage: |
+          /headshoteffects reload - Reloads Config 
+      aliases: [hseffects, hse]
+permissions:
+    headshoteffects.reload:
+        description: Allows users to reload the config
+    headshoteffects.bypassextra:
+        description: Prevents users from taking extra damage that is configured for headshots
+    headshoteffects.effect:
+        description: Allows users to receive HeadshotEffects when hit with a headshot.

@@ -7,14 +7,17 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class ReloadCmd implements CommandExecutor {
-	Headshoteffects plugin;
+	HeadshotEffects plugin;
 
-	ReloadCmd(Headshoteffects plugin) {
+	ReloadCmd(HeadshotEffects plugin) {
 		this.plugin = plugin;
 	}
 
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		String cmd = command.getName();
+		sender.sendMessage(ChatColor.RED + "[HeadshotEffects] This command is currently disabled as a bug is worked out.");
+		return false;
+		
+		/*String cmd = command.getName();
 
 		if (cmd.equals("headshoteffects")) {
 			if (args.length >= 1)
@@ -34,6 +37,6 @@ public class ReloadCmd implements CommandExecutor {
 					return true;
 				}
 		}
-		return false;
+		return false;*/
 	}
 }

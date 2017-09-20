@@ -1,0 +1,50 @@
+#HeadshotEffects by wesley27 - Configuration
+#DO NOT CHANGE THIS VALUE
+configVersion: 6
+
+#If set to true, only players with the "headshoteffects.effect" permission will experience HeadshotEffects
+RequirePermission: false
+
+#Do you want HeadShotEffects to only occur in specific worlds? Default is false.
+UseSpecificWorlds: false
+Worlds:
+- world1
+- world2
+- world3
+
+#ShooterMessage: the message sent to the shooter when they get a headshot.
+#Use color codes via '&' and victims name via %victim
+ShooterMessage: '&6[Headshot] You have hit %victim with a headshot!'
+
+#Options for extra damage.
+#Note that any player with the "headshoteffects.bypassextra" permission will not take any extra damage.
+#   ExtraDamage: the extra damage to be inflicted by the headshot (0-20)
+#   RandomExtraDamage: true will inflict a random amount of extra damage from 0-10
+#   InstaKill: true will instantly kill the victim
+#   NoHelmOnly: true will restrict all DamageOptions to occur only when the victim has no helmet
+DamageOptions:
+    Players:
+        ExtraDamage: 0
+        RandomExtraDamage: false
+        InstaKill: false
+        NoHelmOnly: false
+    Mobs:
+        ExtraDamage: 0
+        RandomExtraDamage: false
+        InstaKill: false
+
+#HeadshotSound: the sound that plays when someone gets a headshot
+#All available sounds to use can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Sound.html
+#The default sound is: ENTITY_ZOMBIE_BREAK_DOOR_WOOD
+#Set to none if you don't want a sound to play when a headshot occurs
+HeadshotSound: ENTITY_ZOMBIE_BREAK_DOOR_WOOD
+
+#ParticleEffect: the particle effect that occurs when someone is hit with a headshot.
+#All available particle effects to use can be found here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Effect.html
+#The default effect is: MOBSPAWNER_FLAMES
+#Set to none if you don't want a particle effect to occur with a headshot.
+ParticleEffect: MOBSPAWNER_FLAMES
+
+#RunCommand: run a command when a player gets a headshot. Default value is none.
+#Use color codes via the & symbol Use %shooter to get the shooters name, use %victim to get the victims name.
+RunCommand: none
