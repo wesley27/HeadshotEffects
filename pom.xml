@@ -46,7 +46,7 @@
       </plugin>
     </plugins>
   </build>
-  <version>2.0</version>
+  <version>2.1</version>
   <scm>
   	<url>https://github.com/wesley27/headshoteffects</url>
   	<developerConnection>wesley27</developerConnection>

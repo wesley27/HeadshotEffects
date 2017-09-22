@@ -77,6 +77,12 @@ public class HeadshotEffects extends JavaPlugin implements Listener {
 		}
 
 		Projectile proj = (Projectile) event.getDamager();
+		
+		if(!config.getBoolean("UseAllProjectiles")) {
+			if(!proj.getType().equals(EntityType.ARROW)) {
+				return;
+			}
+		}
 
 		if(!(proj.getShooter() instanceof Player)) {
 			return;

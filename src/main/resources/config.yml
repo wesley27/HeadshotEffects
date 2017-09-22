@@ -1,6 +1,6 @@
 #HeadshotEffects by wesley27 - Configuration
 #DO NOT CHANGE THIS VALUE
-configVersion: 6
+configVersion: 7
 
 #If set to true, only players with the "headshoteffects.effect" permission will experience HeadshotEffects
 RequirePermission: false
@@ -11,6 +11,9 @@ Worlds:
 - world1
 - world2
 - world3
+
+#Do you want HeadshotEffects to occur with all projectiles? (snowballs, rods, etc.)
+UseAllProjectiles: false
 
 #ShooterMessage: the message sent to the shooter when they get a headshot.
 #Use color codes via '&' and victims name via %victim
