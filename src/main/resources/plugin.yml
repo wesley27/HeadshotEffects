@@ -5,9 +5,7 @@ description: A plethora of options to do when someone gets a headshot
 author: wesley27
 commands:
     headshoteffects:
-      description: Reload HeadshotEffects's Configuration
-      usage: |
-          /headshoteffects reload - Reloads Config 
+      description: Displays plugin information
       aliases: [hseffects, hse]
 permissions:
     headshoteffects.reload:

@@ -12,7 +12,7 @@ Worlds:
 - world2
 - world3
 
-#Do you want HeadshotEffects to occur with all projectiles? (snowballs, rods, etc.)
+#Do you want HeadshotEffects to occur with all projectiles? (snowballs, rods, etc.) (false = only arrows)
 UseAllProjectiles: false
 
 #ShooterMessage: the message sent to the shooter when they get a headshot.
